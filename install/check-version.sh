@@ -8,7 +8,7 @@ fi
 
 . /etc/os-release
 
-# Check if running on Ubuntu 24.04 or higher
+# Check if running on a Debian-based distro
 if [[ "$ID" != "debian" && "$ID_LIKE" != "debian" ]]; then
   echo "$(tput setaf 1)Error: OS requirement not met"
   echo "You are currently running: $ID $VERSION_ID"
