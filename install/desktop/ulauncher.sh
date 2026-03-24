@@ -1,9 +1,25 @@
 #!/bin/bash
 
-sudo add-apt-repository universe -y
-sudo add-apt-repository ppa:agornostal/ulauncher -y
-sudo apt update
-sudo apt install ulauncher -y
+# Add universe repo (Ubuntu only)
+if [[ "$ID" == "ubuntu" ]]; then
+  sudo add-apt-repository universe -y
+fi
+
+# Install Ulauncher
+if [[ "$ID" == "ubuntu" || "$ID_LIKE" == *"ubuntu"* ]]; then
+  # Ubuntu: use PPA for latest version
+  sudo add-apt-repository ppa:agornostal/ulauncher -y
+  sudo apt update
+  sudo apt install ulauncher -y
+else
+  # Debian and other Debian-based: download official .deb
+  TEMP_DIR=$(mktemp -d)
+  cd "$TEMP_DIR"
+  wget -q https://github.com/Ulauncher/Ulauncher/releases/latest/download/io.ulauncher.Ulauncher_amd64.deb
+  sudo dpkg -i io.ulauncher.Ulauncher_amd64.deb || sudo apt install -f -y
+  cd -
+  rm -rf "$TEMP_DIR"
+fi
 
 # Start ulauncher to have it populate config before we overwrite
 mkdir -p ~/.config/autostart/
