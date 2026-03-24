@@ -1,26 +1,30 @@
 #!/bin/bash
 
-# Display system information in the terminal
-if [[ "$ID" == "ubuntu" || "$ID_LIKE" == *"ubuntu"* ]]; then
-  sudo add-apt-repository -y ppa:zhangsongcui3371/fastfetch
+# Load system variables like $ID and $VERSION_CODENAME
+. /etc/os-release
+
+# Install fastfetch based on distribution
+if [[ "$ID" == "ubuntu" ]]; then
+  # Add PPA manually for Ubuntu using version codename
+  echo "deb [trusted=yes] https://ppa.launchpadcontent.net/zhangsongcui3371/fastfetch/ubuntu $VERSION_CODENAME main" | sudo tee /etc/apt/sources.list.d/fastfetch.list >/dev/null
+  sudo apt update -y
+  sudo apt install -y fastfetch
 else
-  # Debian and other Debian-based distros: fastfetch is in main repos or use direct install
+  # Check repository or download from GitHub for Debian/others
   if ! apt-cache show fastfetch >/dev/null 2>&1; then
-    # Fallback: download latest .deb from GitHub
     TEMP_DIR=$(mktemp -d)
     cd "$TEMP_DIR"
-    wget -q https://github.com/fastfetch-cli/fastfetch/releases/latest/download/fastfetch-x86_64.deb
-    sudo dpkg -i fastfetch-x86_64.deb
-    cd -
+    wget -q https://github.com/fastfetch-cli/fastfetch/releases/latest/download/fastfetch-linux-amd64.deb
+    sudo apt install -y ./fastfetch-linux-amd64.deb
+    cd - > /dev/null
     rm -rf "$TEMP_DIR"
   fi
+  sudo apt update -y
+  sudo apt install -y fastfetch
 fi
-sudo apt update -y
-sudo apt install -y fastfetch
 
-# Only attempt to set configuration if fastfetch is not already set
+# Set Omakub configuration if not already set
 if [ ! -f "$HOME/.config/fastfetch/config.jsonc" ]; then
-  # Use Omakub fastfetch config
   mkdir -p ~/.config/fastfetch
   cp ~/.local/share/omakub/configs/fastfetch.jsonc ~/.config/fastfetch/config.jsonc
 fi
