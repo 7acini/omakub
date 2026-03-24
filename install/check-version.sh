@@ -9,10 +9,10 @@ fi
 . /etc/os-release
 
 # Check if running on Ubuntu 24.04 or higher
-if [ "$ID" != "ubuntu" ] || [ $(echo "$VERSION_ID >= 24.04" | bc) != 1 ]; then
+if [[ "$ID" != "debian" && "$ID_LIKE" != "debian" ]]; then
   echo "$(tput setaf 1)Error: OS requirement not met"
   echo "You are currently running: $ID $VERSION_ID"
-  echo "OS required: Ubuntu 24.04 or higher"
+  echo "OS required: Distros Debian-based"
   echo "Installation stopped."
   exit 1
 fi
