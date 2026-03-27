@@ -6,4 +6,4 @@ else
 	SUB=$1
 fi
 
-[ -n "$SUB" ] && [ "$SUB" != "quit" ] && source $OMAKUB_PATH/bin/omakub-sub/$SUB.sh
+[ -n "$SUB" ] && [ "$SUB" != "quit" ] && source $OMAKDEB_PATH/bin/omakdeb-sub/$SUB.sh

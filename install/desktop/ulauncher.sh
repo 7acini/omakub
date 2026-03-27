@@ -20,7 +20,7 @@ fi
 
 # Setup autostart and initial configuration
 mkdir -p ~/.config/autostart/
-cp ~/.local/share/omakub/configs/ulauncher.desktop ~/.config/autostart/ulauncher.desktop
+cp ~/.local/share/omakdeb/configs/ulauncher.desktop ~/.config/autostart/ulauncher.desktop
 gtk-launch ulauncher.desktop >/dev/null 2>&1
 sleep 2 # Wait for config initialization
-cp ~/.local/share/omakub/configs/ulauncher.json ~/.config/ulauncher/settings.json
+cp ~/.local/share/omakdeb/configs/ulauncher.json ~/.config/ulauncher/settings.json
