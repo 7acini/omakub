@@ -11,20 +11,20 @@ ascii_art='________                  __        ___.
 '
 
 echo -e "$ascii_art"
-echo "=> Omakub is for fresh distros Debian-based installations only!"
+echo "=> Omakdeb is for fresh distros Debian-based installations only!"
 echo -e "\nBegin installation (or abort with ctrl+c)..."
 
 sudo apt-get update >/dev/null
 sudo apt-get install -y git >/dev/null
 
-echo "Cloning Omakub..."
-rm -rf ~/.local/share/omakub
-git clone https://github.com/7acini/omakub.git ~/.local/share/omakub >/dev/null
-if [[ $OMAKUB_REF != "master" ]]; then
-	cd ~/.local/share/omakub
-	git fetch origin "${OMAKUB_REF:-stable}" && git checkout "${OMAKUB_REF:-stable}"
+echo "Cloning Omakdeb..."
+rm -rf ~/.local/share/omakdeb
+git clone https://github.com/7acini/omakdeb.git ~/.local/share/omakdeb >/dev/null
+if [[ $OMAKDEB_REF != "master" ]]; then
+	cd ~/.local/share/omakdeb
+	git fetch origin "${OMAKDEB_REF:-stable}" && git checkout "${OMAKDEB_REF:-stable}"
 	cd -
 fi
 
 echo "Installation starting..."
-source ~/.local/share/omakub/install.sh
+source ~/.local/share/omakdeb/install.sh

@@ -1,5 +1,5 @@
-include "%H/.local/share/omakub/defaults/xcompose"
+include "%H/.local/share/omakdeb/defaults/xcompose"
 
 # Identification
-<Multi_key> <space> <n> : "$OMAKUB_USER_NAME"
-<Multi_key> <space> <e> : "$OMAKUB_USER_EMAIL"
+<Multi_key> <space> <n> : "$OMAKDEB_USER_NAME"
+<Multi_key> <space> <e> : "$OMAKDEB_USER_EMAIL"

@@ -1,5 +1,5 @@
-source ~/.local/share/omakub/defaults/bash/shell
-source ~/.local/share/omakub/defaults/bash/aliases
-source ~/.local/share/omakub/defaults/bash/functions
-source ~/.local/share/omakub/defaults/bash/prompt
-source ~/.local/share/omakub/defaults/bash/init
+source ~/.local/share/omakdeb/defaults/bash/shell
+source ~/.local/share/omakdeb/defaults/bash/aliases
+source ~/.local/share/omakdeb/defaults/bash/functions
+source ~/.local/share/omakdeb/defaults/bash/prompt
+source ~/.local/share/omakdeb/defaults/bash/init

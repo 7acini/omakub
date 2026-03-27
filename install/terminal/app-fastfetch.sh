@@ -23,8 +23,8 @@ else
   sudo apt install -y fastfetch
 fi
 
-# Set Omakub configuration if not already set
+# Set Omakdeb configuration if not already set
 if [ ! -f "$HOME/.config/fastfetch/config.jsonc" ]; then
   mkdir -p ~/.config/fastfetch
-  cp ~/.local/share/omakub/configs/fastfetch.jsonc ~/.config/fastfetch/config.jsonc
+  cp ~/.local/share/omakdeb/configs/fastfetch.jsonc ~/.config/fastfetch/config.jsonc
 fi
